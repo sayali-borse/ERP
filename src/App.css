@@ -97,7 +97,9 @@ body {
   margin: 0 auto;
   padding: 0 2rem;
 }
-
+.color {
+  color: orange;
+}
 .page-title {
   font-size: 2rem;
   margin-bottom: 2rem;
