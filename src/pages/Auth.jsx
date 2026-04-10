@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const Auth = () => {
   const [mode, setMode] = useState("SignUp");
@@ -33,7 +34,7 @@ const Auth = () => {
               {mode === "SignUp" ? (
                 <p>
                   Already you have an Account?{" "}
-                  <span className="auth-link" onClick={setMode("Login")}>
+                  <span className="auth-link" onClick={() => setMode("Login")}>
                     {" "}
                     Login
                   </span>
@@ -41,7 +42,7 @@ const Auth = () => {
               ) : (
                 <p>
                   Don't you have an Account?{" "}
-                  <span className="auth-link" onClick={setMode("Login")}>
+                  <span className="auth-link" onClick={() => setMode("SignUp")}>
                     {" "}
                     Sign Up
                   </span>
