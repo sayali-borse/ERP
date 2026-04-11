@@ -1,20 +1,20 @@
-import React, { createContext } from "react";
-import { useState } from "react";
+import React, { createContext, useState } from "react";
 
-export const Authcontext = createContext(null);
+// ✅ Proper naming
+export const AuthContext = createContext(null);
 
-const AuthContext = ({ children }) => {
-  // creating state for user is initially not login
+const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  //  function for sign up
   function signUp(email, password) {
-    const users = [];
+    const users = JSON.parse(localStorage.getItem("users")) || [];
 
     const newUser = { email, password };
     users.push(newUser);
+
     localStorage.setItem("users", JSON.stringify(users));
   }
+
   function login() {}
 
   return (
@@ -22,4 +22,4 @@ const AuthContext = ({ children }) => {
   );
 };
 
-export default AuthContext;
+export default AuthProvider;
