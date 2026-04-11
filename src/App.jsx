@@ -4,23 +4,22 @@ import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import Checkout from "./pages/Checkout";
 import Navbar from "./components/Navbar";
-import AuthContext from "./context/AuthContext";
+import AuthProvider from "./context/AuthContext"; // ✅ correct
 
 function App() {
   return (
-    <>
-      <AuthContext>
-        <div className="app">
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Auth" element={<Auth />} />
-            <Route path="/Checkout" element={<Checkout />} />
-            <Route path="*" element={<p>404 page is not found</p>} />
-          </Routes>
-        </div>
-      </AuthContext>
-    </>
+    <AuthProvider>
+      {" "}
+      {/* ✅ MUST wrap everything */}
+      <div className="app">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Auth" element={<Auth />} />
+          <Route path="/Checkout" element={<Checkout />} />
+        </Routes>
+      </div>
+    </AuthProvider>
   );
 }
 
